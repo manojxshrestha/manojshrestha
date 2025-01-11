@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --neon-blue: #00f3ff;
+    --neon-green: #00ff9d;
+    --neon-purple: #b400ff;
+    --dark-bg: #0a0b0f;
+  }
+
+  body {
+    @apply bg-[var(--dark-bg)] text-white;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply relative;
+  }
+
+  .neon-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    filter: blur(5px);
+    z-index: -1;
+  }
+
+  .skill-bar {
+    @apply h-2 rounded-full bg-gradient-to-r from-[var(--neon-blue)] to-[var(--neon-purple)];
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+
+  .project-card {
+    @apply bg-opacity-10 backdrop-blur-lg bg-white rounded-xl p-6 transition-all duration-300;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--neon-purple);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
